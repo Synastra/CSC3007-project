@@ -1,0 +1,164 @@
+{
+    "name": "flare",
+    "children": [
+     {
+      "name": "Samsung",
+      "children": [
+       {
+        "name": "Samsung S Series",
+        "children": [
+         {"name": "Brand: S20", "size": 3938 , "unit":"Performance/Price"},
+         {"name": "Brand: S21", "size": 3812, "unit":"Performance/Price" }, 
+         {"name": "Brand: S22", "size": 6714, "unit":"Performance/Price"}
+
+        ]
+       },
+       {
+        "name": "Samsung A Series",
+        "children": [
+         {"name": "Brand: A52", "size": 3534},
+         {"name": "Brand: A53", "size": 5731},
+         {"name": "Brand: A50", "size": 7840},
+         {"name": "Brand: A40", "size": 5914},
+         {"name": "Brand: A38", "size": 3416}
+        ]
+       },
+       {
+        "name": "Samsung Note Series",
+        "children": [
+         {"name": "Brand: Note1", "size": 7074},
+         {"name": "Brand: Note2", "size": 7840},
+         {"name": "Brand: Note3", "size": 5914}
+        ]
+       }
+      ]
+     },
+     {
+      "name": "Apple",
+      "children": [
+        {
+         "name": "Iphone11",
+         "children": [
+          {"name": "Brand: Mini", "size": 3938},
+          {"name": "Brand: Normal", "size": 3812},
+          {"name": "Brand: Pro", "size": 6714}
+ 
+         ]
+        },
+        {
+         "name": "Iphone12",
+         "children": [
+          {"name": "Brand: Mini", "size": 3534},
+          {"name": "Brand: Normal", "size": 5731},
+          {"name": "Brand: Pro", "size": 7840}
+         ]
+        },
+        {
+         "name": "Iphone13",
+         "children": [
+          {"name": "Brand: Mini", "size": 7074},
+          {"name": "Brand: Normal", "size": 7840},
+          {"name": "Brand: Pro", "size": 5914}
+         ]
+        }
+       ]
+     },
+     {
+        "name": "Nokia",
+        "children": [
+          {
+           "name": "Nokia X Series",
+           "children": [
+            {"name": "Brand: XR20", "size": 3938},
+            {"name": "Brand: XR10", "size": 3812},
+            {"name": "Brand: XR30", "size": 6714}
+   
+           ]
+          },
+          {
+           "name": "Nokia C Series",
+           "children": [
+            {"name": "Brand: C10", "size": 3534},
+            {"name": "Brand: C20", "size": 5731},
+            {"name": "Brand: C30", "size": 7840},
+            {"name": "Brand: C40", "size": 5914},
+            {"name": "Brand: C50", "size": 3416}
+           ]
+          },
+          {
+           "name": "Nokia G Series",
+           "children": [
+            {"name": "Brand: G15", "size": 7074},
+            {"name": "Brand: G20", "size": 7840},
+            {"name": "Brand: GMAX", "size": 5914}
+           ]
+          }
+         ]
+       },
+       {
+        "name": "XiaoMi",
+        "children": [
+          {
+           "name": "Redmi Note Series",
+           "children": [
+            {"name": "Brand: 11T Pro", "size": 3938},
+            {"name": "Brand: 10A", "size": 3812},
+            {"name": "Brand: Note 11S 5G", "size": 6714}
+   
+           ]
+          },
+          {
+           "name": "Redmi K Series",
+           "children": [
+            {"name": "Brand: K50", "size": 3534},
+            {"name": "Brand: K20", "size": 5731},
+            {"name": "Brand: K50 Pro", "size": 7840},
+            {"name": "Brand: K40S", "size": 5914},
+            {"name": "Brand: K10C", "size": 3416}
+           ]
+          },
+          {
+           "name": "Redmi Poco Series",
+           "children": [
+            {"name": "Brand: M4 Pro", "size": 7074},
+            {"name": "Brand: M3 Pro", "size": 7840},
+            {"name": "Brand: M2 Pro", "size": 5914}
+           ]
+          }
+         ]
+       },
+       {
+        "name": "HuaWei",
+        "children": [
+          {
+           "name": "HuaWei Nova Series",
+           "children": [
+            {"name": "Brand: Nova 10 Pro", "size": 3938},
+            {"name": "Brand: Nova Y90", "size": 3812},
+            {"name": "Brand: Nova 10", "size": 6714}
+   
+           ]
+          },
+          {
+           "name": "HuaWei Mate Series",
+           "children": [
+            {"name": "Brand: 40e", "size": 3534},
+            {"name": "Brand: X2", "size": 5731},
+            {"name": "Brand: 40 Pro+", "size": 7840},
+            {"name": "Brand: 40 Pro", "size": 5914},
+            {"name": "Brand: MatePad+", "size": 3416}
+           ]
+          },
+          {
+           "name": "HuaWei P Series",
+           "children": [
+            {"name": "Brand: P40", "size": 7074},
+            {"name": "Brand: P40 Lite", "size": 7840},
+            {"name": "Brand: P40 Pro", "size": 5914}
+           ]
+          }
+         ]
+       }
+     
+    ]
+   }
