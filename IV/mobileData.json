@@ -7,28 +7,27 @@
        {
         "name": "Samsung S Series",
         "children": [
-         {"name": "Brand: S20", "size": 3938 , "unit":"Performance/Price"},
-         {"name": "Brand: S21", "size": 3812, "unit":"Performance/Price" }, 
-         {"name": "Brand: S22", "size": 6714, "unit":"Performance/Price"}
+         {"name": "Samsung S20", "size": 2750, "price": 470, "unit":"Perf/Price"},
+         {"name": "Samsung S21", "size": 3238, "price": 364, "unit":"Perf/Price" }, 
+         {"name": "Samsung S22", "size": 3682,"price": 1069,  "unit":"Perf/Price"}
 
         ]
        },
        {
         "name": "Samsung A Series",
         "children": [
-         {"name": "Brand: A52", "size": 3534, "description": "i am gay 1"},
-         {"name": "Brand: A53", "size": 5731, "description": "i am gay 2"},
-         {"name": "Brand: A50", "size": 7840, "description": "i am gay 3"},
-         {"name": "Brand: A40", "size": 5914, "description": "i am gay 4"},
-         {"name": "Brand: A38", "size": 3416, "description": "i am gay 5"}
+         {"name": "Samsung A52", "size": 1820, "price": 214},
+         {"name": "Samsung A53", "size": 1891, "price": 311},
+         {"name": "Samsung A12", "size": 1034, "price": 130},
+         {"name": "Samsung A23", "size": 1632, "price": 175}
         ]
        },
        {
         "name": "Samsung Note Series",
         "children": [
-         {"name": "Brand: Note1", "size": 7074},
-         {"name": "Brand: Note2", "size": 7840},
-         {"name": "Brand: Note3", "size": 5914}
+         {"name": "Samsung Note10", "size": 2241, "price": 340},
+         {"name": "Samsung ULTRA", "size": 3657, "price": 1070},
+         {"name": "Samsung Note20", "size": 2603, "price": 650}
         ]
        }
       ]
@@ -39,26 +38,31 @@
         {
          "name": "Iphone11",
          "children": [
-          {"name": "Brand: Mini", "size": 3938},
-          {"name": "Brand: Normal", "size": 3812},
-          {"name": "Brand: Pro", "size": 6714}
+          {"name": "Iphone 11", "size": 3700, "price": 599},
+          {"name": "Iphone 11 Pro", "size": 3850, "price": 899},
+          {"name": "Iphone 11 Pro Max", "size": 4000, "price": 518}
  
          ]
         },
         {
          "name": "Iphone12",
          "children": [
-          {"name": "Brand: Mini", "size": 3534},
-          {"name": "Brand: Normal", "size": 5731},
-          {"name": "Brand: Pro", "size": 7840}
+         
+          {"name": "Iphone 12", "size": 4067, "price": 814},
+          {"name": "Iphone 12 Pro", "size": 4056, "price": 898},
+          {"name": "Iphone 12 Pro Max", "size": 4240, "price": 1048},
+          {"name": "Iphone 12 Mini", "size": 4174, "price": 693}
          ]
         },
         {
          "name": "Iphone13",
          "children": [
-          {"name": "Brand: Mini", "size": 7074},
-          {"name": "Brand: Normal", "size": 7840},
-          {"name": "Brand: Pro", "size": 5914}
+      
+          {"name": "Iphone 13", "size": 4645, "price": 829},
+          {"name": "Iphone 13 Pro", "size": 4687, "price": 1099},
+          {"name": "Iphone Pro Max", "size": 4706, "price": 1099},
+          {"name": "Iphone 13 Mini", "size": 4681, "price": 729 }
+
          ]
         }
        ]
@@ -67,30 +71,28 @@
         "name": "Oppo",
         "children": [
           {
-           "name": "Nokia X Series",
+           "name": "Oppo Reno",
            "children": [
-            {"name": "Brand: XR20", "size": 3938},
-            {"name": "Brand: XR10", "size": 3812},
-            {"name": "Brand: XR30", "size": 6714}
+            {"name": "Oppo Reno8 Pro", "size": 3395, "price": 990},
+            {"name": "Oppo Reno8", "size": 2694, "price": 401},
+            {"name": "Oppo XR30", "size": 2276, "price": 350}
    
            ]
           },
           {
-           "name": "Nokia C Series",
+           "name": "Oppo F series",
            "children": [
-            {"name": "Brand: C10", "size": 3534},
-            {"name": "Brand: C20", "size": 5731},
-            {"name": "Brand: C30", "size": 7840},
-            {"name": "Brand: C40", "size": 5914},
-            {"name": "Brand: C50", "size": 3416}
+            {"name": "Oppo F9 Pro", "size": 1673, "price": 250},
+            {"name": "Oppo F21 Pro", "size": 1653, "price": 250},
+            {"name": "Oppo F7", "size": 1240, "price": 150}
            ]
           },
           {
-           "name": "Nokia G Series",
+           "name": "Oppo X series",
            "children": [
-            {"name": "Brand: G15", "size": 7074},
-            {"name": "Brand: G20", "size": 7840},
-            {"name": "Brand: GMAX", "size": 5914}
+            {"name": "Oppo X5", "size": 3433, "price": 987},
+            {"name": "Oppo X3", "size": 3316, "price": 905},
+            {"name": "Oppo X", "size":  2278, "price": 658}
            ]
           }
          ]
@@ -101,28 +103,26 @@
           {
            "name": "Redmi Note Series",
            "children": [
-            {"name": "Brand: 11T Pro", "size": 3938},
-            {"name": "Brand: 10A", "size": 3812},
-            {"name": "Brand: Note 11S 5G", "size": 6714}
+            {"name": "Xiaomi 11T Pro", "size": 2338, "price": 499},
+            {"name": "Xiaomi 10A", "size": 1780, "price": 224},
+            {"name": "Xiaomi Note 11S 5G", "size":  2225, "price": 324}
    
            ]
           },
           {
            "name": "Redmi K Series",
            "children": [
-            {"name": "Brand: K50", "size": 3534},
-            {"name": "Brand: K20", "size": 5731},
-            {"name": "Brand: K50 Pro", "size": 7840},
-            {"name": "Brand: K40S", "size": 5914},
-            {"name": "Brand: K10C", "size": 3416}
+            {"name": "Xiaomi K50", "size": 3534, "price": 658},
+            {"name": "Xiaomi K20 Pro", "size": 2732, "price": 520},
+            {"name": "Xiaomi K30", "size":  1692, "price": 240}
            ]
           },
           {
-           "name": "Redmi Poco Series",
+           "name": "XiaoMi Series",
            "children": [
-            {"name": "Brand: M4 Pro", "size": 7074},
-            {"name": "Brand: M3 Pro", "size": 7840},
-            {"name": "Brand: M2 Pro", "size": 5914}
+            {"name": "Xiaomi 12", "size": 3652, "price": 672},
+            {"name": "Xiaomi 12X", "size": 3168, "price": 544},
+            {"name": "Xiaomi 11", "size": 3489, "price": 727}
            ]
           }
          ]
@@ -133,28 +133,26 @@
           {
            "name": "HuaWei Nova Series",
            "children": [
-            {"name": "Brand: Nova 10 Pro", "size": 3938},
-            {"name": "Brand: Nova Y90", "size": 3812},
-            {"name": "Brand: Nova 10", "size": 6714}
+            {"name": "HuaWei Nova 10 Pro", "size": 2995, "price": 865},
+            {"name": "HuaWei Nova 8i", "size": 2500, "price": 535},
+            {"name": "HuaWei Nova 7i", "size": 2350, "price": 489}
    
            ]
           },
           {
            "name": "HuaWei Mate Series",
            "children": [
-            {"name": "Brand: 40e", "size": 3534},
-            {"name": "Brand: X2", "size": 5731},
-            {"name": "Brand: 40 Pro+", "size": 7840},
-            {"name": "Brand: 40 Pro", "size": 5914},
-            {"name": "Brand: MatePad+", "size": 3416}
+            {"name": "HuaWei Mate 40e", "size": 3534, "price": 658},
+            {"name": "HuaWei Mate 20", "size": 3200, "price": 599},
+            {"name": "HuaWei Mate 40 Pro+", "size": 3800, "price": 1020}
            ]
           },
           {
            "name": "HuaWei P Series",
            "children": [
-            {"name": "Brand: P40", "size": 7074},
-            {"name": "Brand: P40 Lite", "size": 7840},
-            {"name": "Brand: P40 Pro", "size": 5914}
+            {"name": "HuaWei P40 Pro", "size":  3197, "price": 785},
+            {"name": "HuaWei P30 Lite", "size": 2549, "price": 458},
+            {"name": "HuaWei P50 Pro", "size":  3145, "price": 899}
            ]
           }
          ]
