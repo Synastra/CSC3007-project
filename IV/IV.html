@@ -94,9 +94,15 @@
           })
           .on("click", function (d) {
             console.log(d)
-            if (d.depth!=3) {
-              if (focus !== d) zoom(d), d3.event.stopPropagation();
+            if (d.depth==3) {
+              if (focus !== d) {
+                zoom(d.parent), d3.event.stopPropagation();
+
+              }
+            } else {
+              if (focus !== d) zoom(d), d3.event.stopPropagation();  
             }
+            
           })
           .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible");})
 	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
