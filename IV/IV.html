@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <svg width="960" height="960"></svg>
+    <svg width="960" height="1300"></svg>
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <script>
@@ -104,9 +104,17 @@
             
           })
           .on("mouseover", function(d){
-            if(d.depth === 3 ){
-            return tooltip.text("perf/price:" + (d.data.size/d.data.price).toFixed(2) + " performance: " + d.data.size + " price: " + d.data.price || "").style("visibility", "visible").style("background", "white");}})
-      
+            var textData
+            if (d.depth==3) {
+               textData = `${d.data.name}, Price: $${d.data.price}`
+
+            } else {
+              textData = `${d.data.name}`
+
+            }
+
+            
+            return tooltip.text(textData).style("visibility", "visible").style("background", "white");})
 	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
 	        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
 
@@ -141,9 +149,7 @@
             return d.parent === root ? "inline" : "none";
           })
           .text(function (d) {
-            if(d.depth === 3 ){
-            return ((d.data.size/d.data.price).toFixed(2) + "Perf/Price" || "");
-            }
+            return d.data.size;
           })
           .attr("x", "-25")
           .attr("y", "100");
@@ -205,10 +211,33 @@
         }
       });
 
-      
+      // svg.append('g')
+      // .attr("id", "legend1")
+      // .attr("transform", "translate(100,1000)")
+      // .append("circle")
+      // .attr("r", 40)
+      // .attr("stroke", "black")
+      // .attr("fill", "white")
 
+      // svg.append('g')
+      // .attr("id", "legend2")
+      // .attr("transform", "translate(200,1000)")
+      // .append("circle")
+      // .attr("r", 50)
+      // .attr("stroke", "black")
+      // .attr("fill", "white")
 
+      // svg.append('g')
+      // .attr("id", "legend3")
+      // .attr("transform", "translate(320,1000)")
+      // .append("circle")
+      // .attr("r", 60)
+      // .attr("stroke", "black")
+      // .attr("fill", "white")
 
+      // d3.select("#legend1").append("text").attr('dx', -20).text("1000")
+      // d3.select("#legend2").append("text").attr('dx', -20).text("3000")
+      // d3.select("#legend3").append("text").attr('dx', -20).text("5000")
 
     </script>
   </body>
