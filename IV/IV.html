@@ -19,6 +19,15 @@
             "transform",
             "translate(" + diameter / 2 + "," + diameter / 2 + ")"
           );
+        var colourParent = d3.scaleOrdinal().domain(["Samsung","Apple","HuaWei","Oppo","XiaoMi","white"]).range(["#0A0C96","#6C706B","#FF0202","#2CB135","#FE6C00","white"]);
+        var colourChild = d3.scaleOrdinal().domain(["Samsung","Apple","HuaWei","Oppo","XiaoMi","white"]).range(["#0844FF","#979996","#E74747","#14FB24","#EF7D29","white"]);
+        var colourInnerChild = d3.scaleOrdinal().domain(["Samsung","Apple","HuaWei","Oppo","XiaoMi","white"]).range(["#8FCBFF","#C8CEC7","#FA8B8B","#96F88E","#F9B980","white"]);
+        var tooltip = d3.select("body")
+	      .append("div")
+	      .style("position", "absolute")
+	      .style("z-index", "10")
+	      .style("visibility", "hidden")
+  
 
       var color = d3
         .scaleLinear()
@@ -31,7 +40,7 @@
         .size([diameter - margin, diameter - margin])
         .padding(2);
 
-      d3.json("flare.json", function (error, root) {
+      d3.json("mobileData.json", function (error, root) {
         if (error) throw error;
 
         root = d3
@@ -59,12 +68,28 @@
                 : "node node--leaf"
               : "node node--root";
           })
-          .style("fill", function (d) {
-            return d.children ? color(d.depth) : null;
+          .style("fill", function(d) {
+            
+          if (d.depth === 0 ) {
+              return colourParent("white")
+            };
+          if (d.depth === 1 ) {
+              return colourParent(d.children[0].parent.data.name)
+            };
+            if (d.depth === 2 ) {
+              return colourChild(d.parent.data.name)
+            };
+            if (d.depth === 3 ) {
+              console.log(d.data)
+              return colourInnerChild(d.parent.parent.data.name)
+            };
           })
           .on("click", function (d) {
             if (focus !== d) zoom(d), d3.event.stopPropagation();
-          });
+          })
+          .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible");})
+	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+	        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
 
         var text = g
           .selectAll("text")
