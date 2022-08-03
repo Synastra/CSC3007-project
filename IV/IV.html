@@ -103,7 +103,10 @@
             }
             
           })
-          .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible").style("background", "white");})
+          .on("mouseover", function(d){
+            if(d.depth === 3 ){
+            return tooltip.text("perf/price:" + (d.data.size/d.data.price).toFixed(2) + " performance: " + d.data.size + " price: " + d.data.price || "").style("visibility", "visible").style("background", "white");}})
+      
 	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
 	        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
 
@@ -138,7 +141,9 @@
             return d.parent === root ? "inline" : "none";
           })
           .text(function (d) {
-            return d.data.size;
+            if(d.depth === 3 ){
+            return ((d.data.size/d.data.price).toFixed(2) + "Perf/Price" || "");
+            }
           })
           .attr("x", "-25")
           .attr("y", "100");
