@@ -199,11 +199,30 @@
           });
         }
       });
+
+      var s = d3.select("body").append("svg").attr("width", 800).attr("height", 200)
+      s.append('circle')
+      .attr("id", "legend")
+      .attr('cx', 100)
+  .attr('cy', 100)
+  .attr('r', 50)
+  .attr('stroke', 'black')
+  .attr('fill', '#69a3b2').text("A");
+
+  svg.append('g')
+  .attr("transform", "translate(80,80)")
+  .append('circle')
+  .attr('r', 40).attr('stroke', 'black').attr('fill', 'white').style('position', "absolute")
+  .style("x", 00)
+
+
+
     </script>
   </body>
 </html>
 
 <style>
+
 
   svg {
     margin: auto;
