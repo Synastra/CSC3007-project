@@ -34,7 +34,6 @@
 	      .style("z-index", "10")
 	      .style("visibility", "hidden")
   
-
       var color = d3
         .scaleLinear()
         .domain([-1, 5])
@@ -79,7 +78,7 @@
           .style("fill", function(d) {
             
           if (d.depth === 0 ) {
-              return colourParent("white")
+              return color(-1)
             };
           if (d.depth === 1 ) {
               return colourParent(d.children[0].parent.data.name)
@@ -104,7 +103,7 @@
             }
             
           })
-          .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible");})
+          .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible").style("background", "white");})
 	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
 	        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
 
