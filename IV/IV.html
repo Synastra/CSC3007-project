@@ -46,7 +46,7 @@
         .size([diameter - margin, diameter - margin])
         .padding(2);
 
-      d3.json("mobileData.json", function (error, root) {
+      d3.json("./mobileData.json", function (error, root) {
         if (error) throw error;
 
         root = d3
@@ -62,7 +62,7 @@
           nodes = pack(root).descendants(),
           view;
 
-          console.log(nodes)
+          // console.log(nodes)
 
         var circle = g
           .selectAll("circle")
@@ -88,12 +88,15 @@
               return colourChild(d.parent.data.name)
             };
             if (d.depth === 3 ) {
-              console.log(d.data)
+              // console.log(d.data)
               return colourInnerChild(d.parent.parent.data.name)
             };
           })
           .on("click", function (d) {
-            if (focus !== d) zoom(d), d3.event.stopPropagation();
+            console.log(d)
+            if (d.depth!=3) {
+              if (focus !== d) zoom(d), d3.event.stopPropagation();
+            }
           })
           .on("mouseover", function(d){return tooltip.text(d.data.name).style("visibility", "visible");})
 	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
@@ -165,6 +168,7 @@
             .selectAll("text")
             .filter(function (d) {
               return d.parent === focus || this.style.display === "inline";
+              
             })
             .style("fill-opacity", function (d) {
               return d.parent === focus ? 1 : 0;
@@ -215,6 +219,7 @@
 
   .node--leaf {
     fill: white;
+    pointer-events:all;
   }
 
   .label {
