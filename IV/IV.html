@@ -8,7 +8,7 @@
     <h1>Mobile Device Performance to Price</h1>
     <h3>This circle packing visualisation shows different phone brands, different series of model and different model of phones.<br>
       Each inner circle going into lower heireichy is a group of: brand, series of model, model of phones. <br>
-      The size of each inner circle represent a benchmark value from geekbench.com. <br>
+      The size of each inner circle represent a benchmark value from geekbench.com. Higher benchmark value means higher performance.<br>
 
     </h3>
     <svg width="960" height="980"></svg>
@@ -156,9 +156,14 @@
             return d.parent === root ? "inline" : "none";
           })
           .text(function (d) {
-            return d.data.size;
+            if (d.data.size>0){
+              return "Benchmark: "+d.data.size;
+
+            } else {
+              return d.data.size
+            }
           })
-          .attr("x", "-25")
+          .attr("x", "-90")
           .attr("y", "100");
 
         var node = g.selectAll("circle,text");

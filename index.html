@@ -4,6 +4,9 @@
    <head>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
       <style>
+         body {
+            background-color: #A3F5CF;
+         }
          .button {
            border: black;
            color: black;
@@ -32,5 +35,269 @@
          </h6>
      </div>
 
+
+     <h1>Mobile Device Performance to Price</h1>
+    <h3>This circle packing visualisation shows different phone brands, different series of model and different model of phones.<br>
+      Each inner circle going into lower heireichy is a group of: brand, series of model, model of phones. <br>
+      The size of each inner circle represent a benchmark value from geekbench.com. Higher benchmark value means higher performance.<br>
+
+    </h3>
+    <svg width="960" height="980"></svg>
+    
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <script>
+      var tooltip = d3.select("body")
+	.append("div")
+	.style("position", "absolute")
+	.style("z-index", "10")
+	.style("visibility", "hidden")
+
+      var svg = d3.select("svg"),
+        margin = 20,
+        diameter = +svg.attr("width"),
+        g = svg
+          .append("g")
+          .attr(
+            "transform",
+            "translate(" + diameter / 2 + "," + diameter / 2 + ")"
+          );
+
+        var colourParent = d3.scaleOrdinal().domain(["Samsung","Apple","HuaWei","Oppo","XiaoMi","white"]).range(["#0A0C96","#6C706B","#FF0202","#2CB135","#FE6C00","white"]);
+        var colourChild = d3.scaleOrdinal().domain(["Samsung","Apple","HuaWei","Oppo","XiaoMi","white"]).range(["#0844FF","#979996","#E74747","#14FB24","#EF7D29","white"]);
+        var colourInnerChild = d3.scaleOrdinal().domain(["Samsung","Apple","HuaWei","Oppo","XiaoMi","white"]).range(["#8FCBFF","#C8CEC7","#FA8B8B","#96F88E","#F9B980","white"]);
+        var tooltip = d3.select("body")
+	      .append("div")
+	      .style("position", "absolute")
+	      .style("z-index", "10")
+	      .style("visibility", "hidden")
+  
+      var color = d3
+        .scaleLinear()
+        .domain([-1, 5])
+        .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+        .interpolate(d3.interpolateHcl);
+
+      var pack = d3
+        .pack()
+        .size([diameter - margin, diameter - margin])
+        .padding(2);
+
+      d3.json("./mobileData.json", function (error, root) {
+        if (error) throw error;
+
+        root = d3
+          .hierarchy(root)
+          .sum(function (d) {
+            return d.size;
+          })
+          .sort(function (a, b) {
+            return b.value - a.value;
+          });
+
+        var focus = root,
+          nodes = pack(root).descendants(),
+          view;
+
+          // console.log(nodes)
+
+        var circle = g
+          .selectAll("circle")
+          .data(nodes)
+          .enter()
+          .append("circle")
+          .attr("class", function (d) {
+            return d.parent
+              ? d.children
+                ? "node"
+                : "node node--leaf"
+              : "node node--root";
+          })
+          .style("fill", function(d) {
+            
+          if (d.depth === 0 ) {
+              return color(-1)
+            };
+          if (d.depth === 1 ) {
+              return colourParent(d.children[0].parent.data.name)
+            };
+            if (d.depth === 2 ) {
+              return colourChild(d.parent.data.name)
+            };
+            if (d.depth === 3 ) {
+              // console.log(d.data)
+              return colourInnerChild(d.parent.parent.data.name)
+            };
+          })
+          .on("click", function (d) {
+            console.log(d)
+            if (d.depth==3) {
+              if (focus !== d) {
+                zoom(d.parent), d3.event.stopPropagation();
+
+              }
+            } else {
+              if (focus !== d) zoom(d), d3.event.stopPropagation();  
+            }
+            
+          })
+          .on("mouseover", function(d){
+            var textData
+            if (d.depth==3) {
+               textData = `${d.data.name}, Price: $${d.data.price}`
+
+            } else {
+              textData = `${d.data.name}`
+
+            }
+
+            
+            return tooltip.text(textData).style("visibility", "visible").style("background", "white");})
+	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+	        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
+
+        var text = g
+          .selectAll("text")
+          .data(nodes)
+          .enter()
+          .append("text")
+          .attr("class", "label")
+          .style("fill-opacity", function (d) {
+            return d.parent === root ? 1 : 0;
+          })
+          .style("display", function (d) {
+            return d.parent === root ? "inline" : "none";
+          })
+          .text(function (d) {
+            return d.data.name;
+          })
+          .attr("x", "-75")
+          .attr("y", "0");
+
+        var price = g
+          .selectAll("price")
+          .data(nodes)
+          .enter()
+          .append("text")
+          .attr("class", "label2")
+          .style("fill-opacity", function (d) {
+            return d.parent === root ? 1 : 0;
+          })
+          .style("display", function (d) {
+            return d.parent === root ? "inline" : "none";
+          })
+          .text(function (d) {
+            if (d.data.size>0){
+              return "Benchmark: "+d.data.size;
+
+            } else {
+              return d.data.size
+            }
+          })
+          .attr("x", "-90")
+          .attr("y", "100");
+
+        var node = g.selectAll("circle,text");
+
+        svg.style("background", color(-1)).style("margin", "auto").on("click", function () {
+          zoom(root);
+        });
+
+        zoomTo([root.x, root.y, root.r * 2 + margin]);
+
+        function zoom(d) {
+          var focus0 = focus;
+          focus = d;
+
+          var transition = d3
+            .transition()
+            .duration(d3.event.altKey ? 7500 : 750)
+            .tween("zoom", function (d) {
+              var i = d3.interpolateZoom(view, [
+                focus.x,
+                focus.y,
+                focus.r * 2 + margin,
+              ]);
+              return function (t) {
+                zoomTo(i(t));
+              };
+            });
+
+          transition
+            .selectAll("text")
+            .filter(function (d) {
+              return d.parent === focus || this.style.display === "inline";
+              
+            })
+            .style("fill-opacity", function (d) {
+              return d.parent === focus ? 1 : 0;
+            })
+            .on("start", function (d) {
+              if (d.parent === focus) this.style.display = "inline";
+            })
+            .on("end", function (d) {
+              if (d.parent !== focus) this.style.display = "none";
+            });
+        }
+
+        function zoomTo(v) {
+          var k = diameter / v[2];
+          view = v;
+          node.attr("transform", function (d) {
+            return (
+              "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"
+            );
+          });
+          circle.attr("r", function (d) {
+            return d.r * k;
+          });
+        }
+      });
+
+     
+    </script>
+
    </body>
+
 </html>
+<style>
+
+  svg {
+    margin: auto;
+    display: block;
+  }
+  
+  html {
+    background: #A3F5CF;
+  }
+  .node {
+    cursor: pointer;
+  }
+
+  .node:hover {
+    stroke: #000;
+    stroke-width: 1.5px;
+  }
+
+  .node--leaf {
+    fill: white;
+    pointer-events:all;
+  }
+
+  .label {
+    font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-anchor: start;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+  }
+
+  .label,
+  .node--root{
+    pointer-events: none;
+  }
+
+  .label2 {
+    font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-anchor: start;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+  }
+</style>
