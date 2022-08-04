@@ -145,7 +145,7 @@
           .on("mouseover", function(d){
             var textData
             if (d.depth==3) {
-               textData = `${d.data.name}, Price: $${d.data.price}`
+               textData = `${d.data.name}, Price: $${d.data.price}, Benchmark: ${d.data.size}, Perf/Price: ${(d.data.size/d.data.price).toFixed(2)}`
 
             } else {
               textData = `${d.data.name}`
@@ -189,7 +189,7 @@
           })
           .text(function (d) {
             if (d.data.size>0){
-              return "Benchmark: "+d.data.size;
+              return "Perf/Price: "+ (d.data.size/d.data.price).toFixed(2);
 
             } else {
               return d.data.size
