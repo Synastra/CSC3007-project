@@ -39,7 +39,7 @@
      <h1>Mobile Device Performance to Price</h1>
     <h3>This circle packing visualisation shows different phone brands, different series of model and different model of phones.<br>
       Each inner circle going into lower heireichy is a group of: brand, series of model, model of phones. <br>
-      The size of each inner circle represent a benchmark value from geekbench.com.<br>
+      The size of each inner circle represent a performance(perf)/price value from geekbench.com.<br>
        Higher benchmark value means higher performance.<br>
 
     </h3>
@@ -90,7 +90,7 @@
         root = d3
           .hierarchy(root)
           .sum(function (d) {
-            return d.size;
+            return (d.size/d.price).toFixed(2);
           })
           .sort(function (a, b) {
             return b.value - a.value;
@@ -153,7 +153,7 @@
             }
 
             
-            return tooltip.text(textData).style("visibility", "visible").style("background", "white");})
+            return tooltip.text(textData).style("visibility", "visible").style("background", "white");}).attr("dx", 50)
 	        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
 	        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
 
